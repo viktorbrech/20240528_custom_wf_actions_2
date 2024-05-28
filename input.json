@@ -1,0 +1,90 @@
+{
+    "actionUrl":"https://webhook.site/94d09471-6f4c-4a7f-bae2-c9a585dd41e0",
+    "objectTypes":[
+      "CONTACT"
+    ],
+    "inputFields":[
+      {
+        "typeDefinition":{
+          "name":"staticInput",
+          "type":"string",
+          "fieldType":"text"
+        },
+        "supportedValueTypes":[
+          "STATIC_VALUE"
+        ],
+        "isRequired":true
+      },
+      {
+        "typeDefinition":{
+          "name":"objectInput",
+          "type":"string",
+          "fieldType":"text"
+        },
+        "supportedValueTypes":[
+          "OBJECT_PROPERTY"
+        ],
+        "isRequired":true
+      },
+      {
+        "typeDefinition":{
+          "name":"optionsInput",
+          "type":"enumeration",
+          "fieldType":"select",
+          "optionsUrl":"https://webhook.site/94d09471-6f4c-4a7f-bae2-c9a585dd41e0"
+        },
+        "supportedValueTypes":[
+          "STATIC_VALUE"
+        ]
+      }
+    ],
+    "inputFieldDependencies":[
+      {
+        "dependencyType":"SINGLE_FIELD",
+        "dependentFieldNames":[
+          "objectInput"
+        ],
+        "controllingFieldName":"staticInput"
+      }
+    ],
+    "outputFields":[
+      {
+        "typeDefinition":{
+          "name":"myOutput",
+          "type":"string",
+          "fieldType":"text"
+        },
+        "supportedValueTypes":[
+          "STATIC_VALUE"
+        ]
+      }
+    ],
+    "objectRequestOptions":{
+      "properties":[
+        "email"
+      ]
+    },
+    "labels":{
+      "en":{
+        "inputFieldLabels":{
+          "staticInput":"Static Input",
+          "objectInput":"Object Property Input",
+          "optionsInput":"External Options Input"
+        },
+        "actionName":"My Extension",
+        "actionDescription":"My Extension Description",
+        "appDisplayName":"My App Display Name",
+        "actionCardContent":"My Action Card Content"
+      }
+    },
+    "functions":[
+      {
+        "functionType":"POST_ACTION_EXECUTION",
+        "functionSource":"exports.main = (event, callback) => {\r\n  callback({\r\n    outputFields: {\r\n      myOutput: \"example output value\"\r\n    }\r\n  });\r\n}"
+      },
+      {
+        "functionType":"POST_FETCH_OPTIONS",
+        "functionSource":"exports.main = (event, callback) => {\r\n  callback({\r\n    \"options\": [{\r\n        \"label\": \"Big Widget\",\r\n        \"description\": \"Big Widget\",\r\n        \"value\": \"10\"\r\n      },\r\n      {\r\n        \"label\": \"Small Widget\",\r\n        \"description\": \"Small Widget\",\r\n        \"value\": \"1\"\r\n      }\r\n    ]\r\n  });\r\n}"
+      }
+    ]
+  }
